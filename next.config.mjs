@@ -7,7 +7,7 @@ const nextConfig = {
     return [
       {
         source: "/api/:path*", // API route you want to proxy
-        destination: `${process.env.NEXT_PUBLIC_TRANSCRIPTION_URL}/api/:path*`, // Target backend server
+        destination: `${process.env.NEXT_PUBLIC_TRANSCRIPTION_URL}/:path*`, // Target backend server
       },
     ];
   },
