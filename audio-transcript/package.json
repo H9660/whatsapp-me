@@ -1,0 +1,20 @@
+{
+  "name": "audio-transcript",
+  "version": "1.0.0",
+  "main": "trasnscriptor.js",
+  "type": "module",
+  "scripts": {
+    "start": "node transcriptor.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "multer": "^1.4.5-lts.2",
+    "path": "^0.12.7"
+  }
+}
