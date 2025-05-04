@@ -50,8 +50,7 @@ const MessageInput = () => {
     });
     if (response.ok) {
       const text = await response.json();
-      const match = text.transcription.match(/'transcript':\s*'([^']+)'/);
-      setMsgText(match?.[1] || "");
+      setMsgText(text.transcription);
     } else {
       setMsgText("");
     }
@@ -107,7 +106,7 @@ const MessageInput = () => {
         </div>
         <MediaDropdown />
       </div>
-      <form onSubmit={handleSendTextMsg} className="w-full flex gap-3">
+      <form onSubmit={handleSendTextMsg} className="w-full flex gap-3 rounded-l-lg rounded-r-lg">
         <div className="flex-1">
           <Input
             type="text"
