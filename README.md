@@ -67,9 +67,9 @@ This will deploy the convex functions.
 
 ## 🖼️ Preview
 
-[![Preview](https://img.shields.io/badge/Live-Preview-green?style=for-the-badge&logo=vercel)](https://your-live-link.com)
+[![Preview](https://img.shields.io/badge/Live-Preview-green?style=for-the-badge&logo=vercel)](https://whatsapp-me-red.vercel.app/)
 
-_Live link will be updated here soon._
+Link is live here.
 
 ---
 
@@ -87,3 +87,4 @@ Feel free to fork the repo, open issues, or submit pull requests.
 
 This project is licensed under the **MIT License**. See the [LICENSE](./LICENSE) file for details.
 
+### Here is a demo of the app: [Video](https://drive.google.com/file/d/1tEVV6cKnsh29MGgrAVNlU27gYomVuuf4/view)
