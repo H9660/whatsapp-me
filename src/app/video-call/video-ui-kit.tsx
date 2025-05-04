@@ -1,5 +1,5 @@
 import { randomID } from "@/lib/utils";
-import {useState, useMemo} from "react"
+import { useMemo} from "react"
 import { useClerk } from "@clerk/nextjs";
 import { useMutation, useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
@@ -13,8 +13,8 @@ export function getUrlParams(url = window.location.href) {
 }
 
 interface Props {
-  conversationId: Id<"conversations">;
-  userId: Id<"users">;
+  conversationId: string | null;
+  userId: string | null;
 }
 
 export default function VideoUIKit({ conversationId, userId }: Props) {
@@ -32,7 +32,6 @@ export default function VideoUIKit({ conversationId, userId }: Props) {
     );
   }, [roomID]);
   
-  const content = `New video call started: <a href="${meetingUrl}" target="_blank" class="text-blue-600 underline">Join Meeting</a>`
   const hasSentRef = useRef(false);
   const meetingRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -53,8 +52,8 @@ export default function VideoUIKit({ conversationId, userId }: Props) {
       try {
         await sendTextMsg({
           content,
-          conversation: conversationId,
-          sender: userId,
+          conversation: conversationId as Id<"conversations">,
+          sender: userId as Id<"users">,
           hiddenFrom: [],
         });
       } catch (error: any) {

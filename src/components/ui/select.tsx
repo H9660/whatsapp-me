@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Send } from "lucide-react"; // or any icon library you're using
+import { Ban } from "lucide-react";
 import { Id } from "../../../convex/_generated/dataModel";
+
 type User = {
   id: Id<"users">;
   name: string | undefined;
@@ -30,20 +31,22 @@ export default function MessageControls({
 
   const handleSubmit = () => {
     onSubmit(blocked);
+    setShowDropdown(false); // optionally hide dropdown after submission
   };
 
   if (msgText.length === 0) return null;
 
   return (
-    <div className="flex items-center gap-2 relative">
+    <div className="flex items-center relative">
       <div>
         <button
           type="button"
           onClick={() => setShowDropdown((prev) => !prev)}
           className="border px-2 py-1 rounded"
         >
-          Block Users ▼
+          Block Users
         </button>
+
         {showDropdown && (
           <div className="absolute z-10 bottom-full mb-1 w-48 bg-white border rounded shadow p-2 text-black z-[9999]">
             {groupMembers.map((user) => (
@@ -52,21 +55,23 @@ export default function MessageControls({
                   type="checkbox"
                   checked={blocked.includes(user.id)}
                   onChange={() => toggleBlock(user.id)}
+                  className="accent-blue-600"
                 />
                 <span>{user.name}</span>
               </label>
             ))}
+
+            <button
+              type="button"
+              onClick={handleSubmit}
+              className="mt-2 w-full flex justify-center items-center bg-black text-red-600 font-bold hover:bg-gray-800 px-3 py-1 rounded"
+            >
+              <Ban size={16} className="mr-2" />
+              Block Selected
+            </button>
           </div>
         )}
       </div>
-
-      <button
-        type="button"
-        onClick={handleSubmit}
-        className="bg-transparent text-foreground hover:bg-gray-100 px-3 py-1 rounded"
-      >
-        <Send size={16} />
-      </button>
     </div>
   );
 }

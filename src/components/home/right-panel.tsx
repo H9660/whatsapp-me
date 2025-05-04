@@ -18,8 +18,11 @@ const RightPanel = () => {
   const handleConfirm = () => {
     const conversationId = selectedConversation?._id;
     if (!conversationId) return;
-  
-    window.open(`/video-call?conversationId=${conversationId}&&userId=${me!._id}`, "_blank");
+
+    window.open(
+      `/video-call?conversationId=${conversationId}&&userId=${me!._id}`,
+      "_blank"
+    );
     setIsOpen(false);
   };
   console.log(isAuthenticated);
@@ -35,7 +38,7 @@ const RightPanel = () => {
   const isGroup = selectedConversation.isGroup;
 
   return (
-    <div className="w-full sm:w-3/4 sm:mt-10 flex flex-col">
+    <div className="w-full sm:w-3/4 sm:flex flex-col">
       <div className="w-full sticky top-0 z-50">
         {/* Header */}
         <div className="flex justify-between bg-gray-primary p-3">
@@ -60,33 +63,33 @@ const RightPanel = () => {
           </div>
 
           {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-          <div className="absolute inset-0 bg-[url('/whatsapp-bg.png')] bg-cover opacity-10"></div>
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
+              <div className="absolute inset-0 bg-[url('/whatsapp-bg.png')] bg-cover opacity-10"></div>
 
-          <div className="relative z-10 bg-white rounded-2xl shadow-xl w-80 p-6 border border-gray-200">
-            <h2 className="text-xl font-semibold mb-2 text-gray-800">
-              Confirm Video Call
-            </h2>
-            <p className="text-sm text-gray-600 mb-5">
-              Are you sure you want to join the video call?
-            </p>
-            <div className="flex justify-end gap-3">
-              <button
-                onClick={() => setIsOpen(false)}
-                className="px-4 py-2 text-sm bg-gray-100 hover:bg-gray-200 rounded-lg text-black"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleConfirm}
-                className="px-4 py-2 text-sm bg-green-600 text-white hover:bg-green-700 rounded-lg"
-              >
-                Yes, go now
-              </button>
+              <div className="relative z-10 bg-white rounded-2xl shadow-xl w-80 p-6 border border-gray-200">
+                <h2 className="text-xl font-semibold mb-2 text-gray-800">
+                  Confirm Video Call
+                </h2>
+                <p className="text-sm text-gray-600 mb-5">
+                  Are you sure you want to join the video call?
+                </p>
+                <div className="flex justify-end gap-3">
+                  <button
+                    onClick={() => setIsOpen(false)}
+                    className="px-4 py-2 text-sm bg-gray-100 hover:bg-gray-200 rounded-lg text-black"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={handleConfirm}
+                    className="px-4 py-2 text-sm bg-green-600 text-white hover:bg-green-700 rounded-lg"
+                  >
+                    Yes, go now
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      )}
+          )}
 
           <div className="flex items-center gap-7 mr-5">
             <button onClick={() => setIsOpen(true)} className="p-1">
@@ -102,8 +105,8 @@ const RightPanel = () => {
       </div>
       {/* CHAT MESSAGES */}
       <div className="flex-1 overflow-auto">
-  <MessageContainer />
-</div>
+        <MessageContainer />
+      </div>
 
       {/* INPUT */}
       <MessageInput />
