@@ -75,7 +75,7 @@ Link is live here.
 
 ## 🤝 Contributing
 
-[![Contribute](https://img.shields.io/badge/Contributions-Welcome-blue?style=for-the-badge&logo=github)](https://github.com/your-username/whatsapp-clone)
+[![Contribute](https://img.shields.io/badge/Contributions-Welcome-blue?style=for-the-badge&logo=github)](https://github.com/H9660/whatsapp-me)
 
 Feel free to fork the repo, open issues, or submit pull requests.
 
