@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config = {
   darkMode: ["class"],
@@ -67,6 +67,7 @@ const config = {
       backgroundImage: {
         "chat-tile-light": "url('/bg-light.png')",
         "chat-tile-dark": "url('/bg-dark.png')",
+        "green-flow": "linear-gradient(45deg, #007a65, #1a9e4b, #007a65)", // Darker green shades
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -82,14 +83,20 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "flow": {
+          "0%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+          "100%": { backgroundPosition: "0% 50%" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "flow-green": "flow 6s ease infinite",
       },
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config
+} satisfies Config;
 
-export default config
+export default config;

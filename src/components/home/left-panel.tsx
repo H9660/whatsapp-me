@@ -4,7 +4,6 @@ import { Input } from "../ui/input";
 import ThemeSwitch from "./theme-switch";
 import Conversation from "./conversation";
 import { UserButton } from "@clerk/nextjs";
-
 import UserListDialog from "./user-list-dialog";
 import { useConvexAuth, useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
@@ -18,12 +17,10 @@ const LeftPanel = () => {
     isAuthenticated ? undefined : "skip"
   );
 
-  const { selectedConversation, setselectedConversation } =
-    useConversationStore();
+  const { selectedConversation, setselectedConversation } = useConversationStore();
+
   useEffect(() => {
-    const conversationIds = conversations?.map(
-      (conversation) => conversation._id
-    );
+    const conversationIds = conversations?.map((conversation) => conversation._id);
     if (
       selectedConversation &&
       conversationIds &&
@@ -36,54 +33,53 @@ const LeftPanel = () => {
   if (isLoading) return null;
 
   return (
-    <div className="w-1/4 border-gray-600 border-r">
-      <div className="sticky top-0 bg-left-panel z-10">
-        {/* Header */}
-        <div className="flex justify-between bg-gray-primary p-3 items-center">
+    <div className="w-full sm:w-1/4 flex flex-col border-r border-gray-600 h-screen">
+      {/* Sticky Header */}
+      <div className="sticky top-0 bg-[#121b22] z-10">
+        {/* Header Content */}
+        <div className="flex justify-between bg-[#121b22] p-3 items-center">
           <UserButton />
+          <div className="text-white font-semibold px-6 py-2 rounded-full">
+            WhatsApp
+          </div>
           <div className="flex items-center gap-3">
             {isAuthenticated && <UserListDialog />}
             <ThemeSwitch />
           </div>
         </div>
+
+        {/* Search Bar */}
         <div className="p-3 flex items-center">
-          {/* Search */}
           <div className="relative h-10 mx-3 flex-1">
             <Search
-              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 z-10"
+              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 z-10"
               size={18}
             />
             <Input
               type="text"
               placeholder="Search or start a new chat"
-              className="pl-10 py-2 text-sm w-full rounded shadow-sm bg-gray-primary focus-visible:ring-transparent"
+              className="pl-10 py-2 text-sm w-full rounded bg-[#1f2c33] text-gray-200 focus-visible:ring-transparent"
             />
           </div>
-          <ListFilter className="cursor-pointer" />
+          <ListFilter className="text-gray-400 cursor-pointer" />
         </div>
       </div>
 
-      {/* Chat List */}
-      <div className="my-3 flex flex-col gap-0 max-h-[80%] overflow-auto">
-        {/* Conversations will go here*/}
-
-        {conversations?.map((conversation) => (
-          <Conversation key={conversation._id} conversation={conversation} />
-        ))}
-
-        {conversations?.length === 0 && (
-          <>
-            <p className="text-center text-gray-500 text-sm mt-3">
-              No conversations yet
-            </p>
-            <p className="text-center text-gray-500 text-sm mt-3 ">
-              We understand {"you're"} an introvert, but {"you've"} got to start
-              somewhere 😊
-            </p>
-          </>
+      {/* Scrollable Chat List */}
+      <div className="flex-1 overflow-y-auto bg-[#121b22]">
+        {conversations?.length ? (
+          conversations.map((conversation) => (
+            <Conversation key={conversation._id} conversation={conversation} />
+          ))
+        ) : (
+          <div className="text-center text-gray-500 text-sm mt-3 px-2">
+            <p>No conversations yet</p>
+            <p>We understand you're an introvert, but you've got to start somewhere 😊</p>
+          </div>
         )}
       </div>
     </div>
   );
 };
+
 export default LeftPanel;

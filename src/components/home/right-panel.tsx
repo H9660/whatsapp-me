@@ -35,7 +35,7 @@ const RightPanel = () => {
   const isGroup = selectedConversation.isGroup;
 
   return (
-    <div className="w-3/4 flex flex-col">
+    <div className="w-full sm:w-3/4 sm:mt-10 flex flex-col">
       <div className="w-full sticky top-0 z-50">
         {/* Header */}
         <div className="flex justify-between bg-gray-primary p-3">
@@ -101,7 +101,9 @@ const RightPanel = () => {
         </div>
       </div>
       {/* CHAT MESSAGES */}
-      <MessageContainer />
+      <div className="flex-1 overflow-auto">
+  <MessageContainer />
+</div>
 
       {/* INPUT */}
       <MessageInput />
